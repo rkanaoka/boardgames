@@ -1,36 +1,26 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
         <link rel="stylesheet" href="index.css">        
     </head>
     <body>
         <h1>BGs</h1>
         <div id="app">
-            <ul>
-                <li v-for="jogo in jogos">
-                    <div class="painel-jogo">
-                        <h3>{{ jogo.titulo }}</h3>
-                        <img :src="jogo.imgUrl" class="imagem-painel-jogo" />            
-                        <button>Detalhes</button>
-                        <button type="button" @click="remove(jogo.id)">Remover</button>
-                    </div>
-                </li>
-            </ul>>
+            <ul id="lista-jogos"> 
+            </ul>
             <div class="painel-cadastro">
                 <form id="form-cadastro">
-                    <input id="jogo-titulo" v-model="jogo.titulo" type="text" placeholder="Título" />
-                    <input id="jogo-imagem" v-model="jogo.imgUrl" type="text" placeholder="URL da imagem" />
-                    <button type="button" @click="grava()">Salvar</button>
+                    <input id="txt-titulo" type="text" placeholder="Título" />
+                    <input id="txt-imagem" type="text" placeholder="URL da imagem" />
+                    <button id="btn-salvar" type="button" @click="grava()">Salvar</button>
                 </form>            
             </div>
         </div>
 
-        
-        <!-- development version, includes helpful console warnings -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- production version, optimized for size and speed 
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+        <script src="js/jogos.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
