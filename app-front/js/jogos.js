@@ -49,7 +49,7 @@ function gravaNovoJogo() {
 
 function removeJogoDaLista(event) {
     event.preventDefault();
-    var item = $(this).parent().parent().parent().parent();
+    var item = $(this).parent().parent().parent();
     var id = item.attr("id");
     $.ajax({
         url: `/v1/jogos/${id}`,
