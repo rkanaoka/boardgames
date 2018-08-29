@@ -1,7 +1,7 @@
 
 
 function carregaListaJogos() {
-    $.get("http://localhost:3000/v1/jogos", function(data){
+    $.get("/v1/jogos", function(data){
         $(data).each(function() {
             adicionaJogoNaLista(this._id, this.titulo, this.imgUrl);            
         });
@@ -36,7 +36,7 @@ function adicionaJogoNaLista(id, titulo,imgUrl) {
 function gravaNovoJogo() {
     var eTitulo = $('#txt-titulo');
     var eImg = $('#txt-imagem');
-    $.post("http://localhost:3000/v1/jogos", {
+    $.post("/v1/jogos", {
         titulo: eTitulo.val(),
         imgUrl: eImg.val()
     }, function(data){
