@@ -3,34 +3,66 @@
 function carregaListaJogos() {
     $.get("http://localhost:3000/v1/jogos", function(data){
         $(data).each(function() {
-            var item = adicionaJogoNaLista(this.titulo,this.imgUrl);            
-            $("#lista-jogos").append(item);
+            adicionaJogoNaLista(this._id, this.titulo, this.imgUrl);            
         });
     });
 }
 
-function adicionaJogoNaLista(titulo,imgUrl) {
-    var elItem = $("<li>");
-    var elTitulo = $("<h2>").text(titulo);
-    var elImg = $("<img>").attr("src",imgUrl);
+function adicionaJogoNaLista(id, titulo,imgUrl) {
+    var btnEditar = $("<a>").attr("href","#").addClass("waves-effect waves-light btn").text("Editar");
+    var btnRemover = $("<a>").attr("href","#").addClass("waves-effect waves-light btn").text("Remover");
+    btnRemover.click(removeJogoDaLista);
 
-    var elBtnRemover = $("<a>").attr("href","#").addClass("botao-remover waves-effect waves-light btn-small");
-    var elIcone = $("<i>").addClass("small").addClass("material-icons").text("delete");
+    var cardImage = $("<div>").addClass("card-image")
+            .append($("<img>").attr("src",imgUrl))            
+    var cardContent = $("<div>").addClass("card-content")
+            .append($("<span>").addClass("card-title").text(titulo))
+            .append($("p").text("Descrição do jogo"));
+    var cardAction = $("<div>").addClass("card-action ")
+            .append(btnEditar)
+            .append(btnRemover);   
 
-    elBtnRemover.append(elIcone);
-    elItem.append(elTitulo);
-    elItem.append(elImg);
-    elItem.append(elBtnRemover);
-    elBtnRemover.click(removeJogoDaLista);
+    
+    var card =  $("<div>").attr("id",id).addClass("col s12 m6 l4 xl3").append(
+                        $("<div>").addClass("card")
+                            .append(cardImage)
+                            .append(cardContent)
+                            .append(cardAction)
+                    );
 
-    return elItem;
+    $("#painel-jogos").append(card);
+}
+
+function gravaNovoJogo() {
+    var eTitulo = $('#txt-titulo');
+    var eImg = $('#txt-imagem');
+    $.post("http://localhost:3000/v1/jogos", {
+        titulo: eTitulo.val(),
+        imgUrl: eImg.val()
+    }, function(data){
+        adicionaJogoNaLista(data._id,data.titulo,data.imgUrl);
+        eTitulo.val("");
+        eImg.val("");
+    })
+    .fail( error => console.log("falhou: " + error));
 }
 
 function removeJogoDaLista(event) {
     event.preventDefault();
-    var item = $(this).parent();
-    item.fadeOut(1000);
-    setTimeout(function(){
-        item.remove();
-    }, 1000);
+    var item = $(this).parent().parent().parent().parent();
+    var id = item.attr("id");
+    $.ajax({
+        url: `/v1/jogos/${id}`,
+        type: 'DELETE',
+        success: function(){
+            item.fadeOut(1000);
+            setTimeout(function(){
+            item.remove();
+            }, 1000);
+        },
+        error: function() {
+            console.log("falhou feio, falhou rude");
+        }
+    });
+    
 }

@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-        <link rel="stylesheet" href="index.css">        
+        <title>Boardgames Database | BODOGAMI</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>    
     </head>
     <body>
-        <h1>BGs</h1>
-        <div id="app">
-            <ul id="lista-jogos"> 
-            </ul>
+        <header>            
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo">Boardgames Database</a>
+                    <ul class="right hide-on-med-and-down">
+                    <li><a href="#"><i class="material-icons">search</i></a></li>
+                    <li><a href="#"><i class="material-icons">view_module</i></a></li>
+                    <li><a href="#"><i class="material-icons">refresh</i></a></li>
+                    <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div id="painel-jogos" class="container row">
+
+            </div>
             <div class="painel-cadastro">
                 <form id="form-cadastro">
                     <input id="txt-titulo" type="text" placeholder="Título" />
                     <input id="txt-imagem" type="text" placeholder="URL da imagem" />
-                    <button id="btn-salvar" type="button" @click="grava()">Salvar</button>
+                    <button id="btn-salvar-jogo" type="button" @click="grava()">Salvar</button>
                 </form>            
             </div>
-        </div>
-
+        </main>
+        <footer>
+            <p>Copyright 2018 Bodogami</p>
+        </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jogos.js"></script>
