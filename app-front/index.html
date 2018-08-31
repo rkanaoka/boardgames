@@ -22,14 +22,14 @@
             </nav>
         </header>
         <main>
-            <div id="painel-jogos" class="container row">
+            <div id="jogos-view" class="container row">
 
             </div>
             <div class="painel-cadastro">
                 <form id="form-cadastro">
                     <input id="txt-titulo" type="text" placeholder="Título" />
                     <input id="txt-imagem" type="text" placeholder="URL da imagem" />
-                    <button id="btn-salvar-jogo" type="button" @click="grava()">Salvar</button>
+                    <button id="btn-salvar-jogo" type="button" onclick="gravaNovoJogo()">Salvar</button>
                 </form>            
             </div>
         </main>
@@ -38,7 +38,13 @@
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/jogos.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/app/models/Jogo.js"></script>
+        <script src="js/app/models/ListaJogos.js"></script>
+        <script src="js/app/views/View.js"></script>
+        <script src="js/app/views/JogosView.js"></script>
+        <script src="js/app/controllers/JogosController.js"></script>
+        <script>
+            let jogoController = new JogosController();
+        </script>
     </body>
 </html>
