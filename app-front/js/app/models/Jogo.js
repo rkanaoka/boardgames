@@ -29,8 +29,8 @@ class Jogo {
 			required: true
 		}]
 		*/
-    }
-    
+	}
+
     get id() {
         return this._id;
     }
