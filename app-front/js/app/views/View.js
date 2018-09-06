@@ -11,7 +11,6 @@ class View {
     }
     
     update(model) {
-        
         this._elemento.html(this.template(model));
     }
 }

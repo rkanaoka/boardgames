@@ -9,7 +9,8 @@ class JogosView extends View {
         console.log(model.jogos);
         return `
             <ul class="collection">
-                ${model.jogos.map(n => `
+                ${model._jogos.map(n => `
+
                     <li class="collection-item avatar">
                         <img src="${n.imgUrl}" alt="" class="circle">
                         <span class="title">${n.titulo}</span>
@@ -18,6 +19,7 @@ class JogosView extends View {
                         </p>
                         <a href="#" class="waves-effect waves-light btn" onclick="removeJogoDaLista()">Remover</a>
                     </li>
+                    
                 `).join('')}
             </ul>
         `;
