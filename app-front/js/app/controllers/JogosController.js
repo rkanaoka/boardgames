@@ -10,7 +10,7 @@ class JogosController {
         $.get("/v1/jogos", data => {
             console.log(data);
             data.forEach(jogo => {
-                lista.adiciona(new Jogo(jogo._id,jogo.titulo,jogo.img));
+                this._listaJogos.adiciona(new Jogo(jogo._id,jogo.titulo,jogo.img));
             });
         }).then(() => {
             this._jogosView.update(this._listaJogos);
