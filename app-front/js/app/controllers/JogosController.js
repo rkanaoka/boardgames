@@ -3,18 +3,17 @@ class JogosController {
     constructor() {
         this._listaJogos = new ListaJogos();
         this._jogosView = new JogosView($("#jogos-view"));
-        this.carregaLista(this._jogosView);
+        this.carregaLista();
     }
 
-    carregaLista(view) {
-        let lista = this._listaJogos;
+    carregaLista() {
         $.get("/v1/jogos", data => {
             console.log(data);
             data.forEach(jogo => {
                 lista.adiciona(new Jogo(jogo._id,jogo.titulo,jogo.img));
             });
-        }).then(function(){
-            view.update(lista);
+        }).then(() => {
+            this._jogosView.update(this._listaJogos);
         });
     }
 
@@ -28,7 +27,7 @@ class JogosController {
             img:$("#txt-imagem").val()
         }
         $.post("/v1/jogos", jogo, data => {
-            this._listaJogos.adiciona(new Jogo(data._id,data.titulo,data.imagens));        
+            this._listaJogos.adiciona(new Jogo(data._id,data.titulo,data.img));        
         }).then(() => {
             this._jogosView.update(this._listaJogos);
         });
