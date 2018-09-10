@@ -16,7 +16,7 @@ class JogosView extends View {
                         <p>First Line <br>
                         Second Line
                         </p>
-                        <a href="#" class="waves-effect waves-light btn" onclick="jogosController.removeJogo(event)">Remover</a>
+                        <a href="#" class="waves-effect waves-light btn" onclick="jogosController.removeJogo('${n.id}')">Remover</a>
                     </li>
                     
                 `).join('')}

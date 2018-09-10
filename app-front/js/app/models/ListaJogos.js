@@ -9,6 +9,10 @@ class ListaJogos {
         
         this._jogos.push(jogo);
     }
+
+    remove(id) {
+        this._jogos = this._jogos.filter(n => n.id!=id);
+    }
     
     get jogos() {
         

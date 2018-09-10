@@ -33,14 +33,13 @@ class JogosController {
         });
     }
 
-    removeJogo(event) {
-        var jogo = $(event.target).parent();
-        var id = jogo.attr("id")
+    removeJogo(id) {
         $.ajax({
             method: "DELETE",
             url: `/v1/jogos/${id}`
-        }).done(function(){
-            jogo.remove();
+        }).done(()=>{
+            this._listaJogos.remove(id);
+            this._jogosView.update(this._listaJogos);
         });
     }
 
