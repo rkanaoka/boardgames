@@ -6,13 +6,12 @@ class JogosView extends View {
 
 
     template(model) {
-        console.log(model.jogos);
         return `
             <ul class="collection">
                 ${model._jogos.map(n => `
 
                     <li id="${n.id}" class="collection-item avatar">
-                        <img src="${n.imgUrl}" alt="" class="circle">
+                        <img src="${n.imagens}" alt="" class="circle">
                         <span class="title">${n.titulo}</span>
                         <p>First Line <br>
                         Second Line

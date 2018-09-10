@@ -20,10 +20,8 @@ var schema = mongoose.Schema({
 	maxTempo: Number,
 	dimensoes: [Number],
 	peso: Number,
-	imagens: [{
-		type: String,
-		required: true
-	}]
+	imagens: [String],
+	img: String	
 });
 
 mongoose.model('Jogo', schema);

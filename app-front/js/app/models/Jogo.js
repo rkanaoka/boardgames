@@ -1,10 +1,10 @@
 class Jogo {
     
-    constructor(id, titulo,imgUrl) {
+    constructor(id, titulo, imagens) {
         
 		this._id = id;
 		this._titulo = titulo;
-		this._imgUrl = imgUrl;
+		this._imagens = imagens;
 		/*
 		titulo: {
 			type: String,
@@ -39,8 +39,8 @@ class Jogo {
 		return this._titulo;
 	}
 
-	get imgUrl() {    
-		return this._imgUrl;
+	get imagens() {    
+		return this._imagens;
 	}
 
 }

@@ -8,10 +8,10 @@ class JogosController {
 
     carregaLista(view) {
         let lista = this._listaJogos;
-        $.get("/v1/jogos", function(data){
-            $(data).each(function() {        
-                let jogo = new Jogo(this._id, this.titulo, this.imgUrl);
-                lista.adiciona(jogo);        
+        $.get("/v1/jogos", data => {
+            console.log(data);
+            data.forEach(jogo => {
+                lista.adiciona(new Jogo(jogo._id,jogo.titulo,jogo.img));
             });
         }).then(function(){
             view.update(lista);
@@ -25,15 +25,12 @@ class JogosController {
     gravaNovoJogo() {
         var jogo = {
             titulo:$("#txt-titulo").val(),
-            imgUrl:$("#txt-imagem").val()
+            img:$("#txt-imagem").val()
         }
-        var lista = this._listaJogos;
-        var view = this._jogosView;
-        $.post("/v1/jogos", jogo, function(data){
-            let jogo = new Jogo(data._id,data.titulo,data.imgUrl);
-            lista.adiciona(jogo);        
-        }).then(function(){
-            view.update(lista);
+        $.post("/v1/jogos", jogo, data => {
+            this._listaJogos.adiciona(new Jogo(data._id,data.titulo,data.imagens));        
+        }).then(() => {
+            this._jogosView.update(this._listaJogos);
         });
     }
 
